@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,22 +27,36 @@ class MainActivity : AppCompatActivity() {
             val weight = weightInputEt.text.toString()
             val height = heightInputEt.text.toString()
 
-            val bmi = weight.toFloat() / ((height.toFloat() / 100) * (height.toFloat() / 100))
+            if(validateInput(weight, height)) {
 
-            // get result with 2 decimal places
-            bmiTwoDigits = String.format("%.2f", bmi).toFloat()
-//            saveResult()
+                val bmi = weight.toFloat() / ((height.toFloat() / 100) * (height.toFloat() / 100))
 
-            val intent = Intent(this, SecondActivity::class.java)
-            intent.putExtra("bmi", bmiTwoDigits)
-            startActivity(intent)
+                // get result with 2 decimal places
+                bmiTwoDigits = String.format("%.2f", bmi).toFloat()
+
+                val intent = Intent(this, SecondActivity::class.java)
+                intent.putExtra("bmi", bmiTwoDigits)
+                startActivity(intent)
+
+//                weightInputEt.setText("")
+//                heightInputEt.setText("")
+            }
+        }
+    }
+    private fun validateInput(weight: String?, height: String?): Boolean {
+        return when {
+            weight.isNullOrEmpty() -> {
+                Toast.makeText(this, "Please enter weight", Toast.LENGTH_SHORT).show()
+                false
+            }
+            height.isNullOrEmpty() -> {
+                Toast.makeText(this, "Please enter height", Toast.LENGTH_SHORT).show()
+                false
+            }
+            else -> {
+                true
+            }
         }
     }
 
-//    private fun saveResult() {
-//        editor.apply {
-//            putFloat("bmi", bmiTwoDigits)
-//            commit()
-//        }
-//    }
 }

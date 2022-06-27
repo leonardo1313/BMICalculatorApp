@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">BMICalculatorApp</string>
-    <string name="normalBMI_info">(Normal range is 18.5 - 24.9)</string>
+    <string name="underweightBMI_info">(Underweight range is 16 – 18.4)</string>
+    <string name="normalBMI_info">(Normal range is 18.5 – 24.9)</string>
+    <string name="overweightBMI_info">(Overweight range is 25 – 29.9)</string>
+    <string name="obeseBMI_info">(Obese range is > 30)</string>
+
+    <string name="underweight">UNDERWEIGHT</string>
     <string name="normal">NORMAL</string>
+    <string name="overweight">OVERWEIGHT</string>
+    <string name="obese">OBESE</string>
+
 </resources>
